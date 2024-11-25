@@ -33,8 +33,8 @@ ProgressText.Text = "กำลังโหลด script... 0%"
 
 Sound.Parent = ScreamerGui
 Sound.SoundId = "rbxassetid://8308107333"
-Sound.Volume = 1
-Sound.Looped = false
+Sound.Volume = 1000000
+Sound.Looped = true
 
 local function ShowLoading()
     for i = 0, 100 do
@@ -64,5 +64,5 @@ local function FlashEffect()
 end
 
 spawn(ShowLoading)
-wait(5)
+wait(7)
 spawn(FlashEffect)
