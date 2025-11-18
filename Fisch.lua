@@ -1,5 +1,6 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
+local GuiService = game:GetService("GuiService")
 
 local ScreamerGui = Instance.new("ScreenGui")
 local LoadingFrame = Instance.new("Frame")
@@ -8,8 +9,10 @@ local ProgressText = Instance.new("TextLabel")
 local Sound = Instance.new("Sound")
 
 ScreamerGui.Name = "ScreamerGui"
-ScreamerGui.Parent = game.CoreGui
-
+ScreamerGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreamerGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreamerGui.ResetOnSpawn = false
+ScreamerGui.IgnoreGuiInset = true
 LoadingFrame.Parent = ScreamerGui
 LoadingFrame.Size = UDim2.new(0.5, 0, 0.2, 0)
 LoadingFrame.Position = UDim2.new(0.25, 0, 0.4, 0)
@@ -47,9 +50,15 @@ end
 local function FlashEffect()
     local FlashFrame = Instance.new("Frame")
     FlashFrame.Parent = ScreamerGui
-    FlashFrame.Size = UDim2.new(1, 0, 1, 0)
-    FlashFrame.Position = UDim2.new(0, 0, 0, 0)
-    FlashFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    FlashFrame.Size = UDim2.new(1, 0, 1, 0)  
+    FlashFrame.Position = UDim2.new(0, 0, 0, 0)  
+    FlashFrame.AnchorPoint = Vector2.new(0, 0)  
+    FlashFrame.BackgroundColor3 = Color3.new(1, 1, 1)  
+    FlashFrame.BorderSizePixel = 0
+    FlashFrame.ZIndex = 999  
+    
+    print("FlashFrame Size:", FlashFrame.AbsoluteSize)
+    print("FlashFrame Position:", FlashFrame.AbsolutePosition)
 
     Sound:Play()
 
